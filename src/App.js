@@ -1,26 +1,77 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Navigation from "./components/navigation/Navigation";
+import Logo from "./components/logo/Logo";
+import ImageLinkForm from "./components/imageLinkForm/ImageLinkForm";
+import Rank from "./components/rank/Rank";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Particles from "react-particles-js";
+import Clarifai from "clarifai";
+
+const app = new Clarifai.App({
+  apiKey: "cf074394a8344254a296a42bd8779840"
+});
+
+const particlesOptions = {
+  particles: {
+    number: {
+      value: 90,
+      density: {
+        enable: true,
+        value_area: 800
+      }
+    }
+
+    // line_linked: {
+    //   shadow: {
+    //     enable: true,
+    //     color: "#3CA9D1",
+    //     blur: 5
+    //   }
+    // }
+  }
+};
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      input: ""
+    };
+  }
+
+  onInputChange = event => {
+    console.log(event.target.value);
+  };
+
+  onSubmit = () => {
+    console.log("click");
+    app.models
+      .predict(app.apiKey, "https://samples.clarifai.com/face-det.jpg")
+      .then(
+        function(response) {
+          console.log(response);
+        },
+        function(err) {
+          // there was an error
+        }
+      );
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Particles className="particles" params={particlesOptions} />
+        <Navigation />
+        <Logo />
+        <Rank />
+        <ImageLinkForm
+          onInputChange={this.onInputChange}
+          onSubmit={this.onSubmit}
+        />
+      </div>
+    );
+  }
 }
 
 export default App;
