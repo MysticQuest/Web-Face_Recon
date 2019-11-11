@@ -1,12 +1,14 @@
-import React from "react";
+import React, { Component } from "react";
+import Particles from "react-particles-js";
+import Clarifai from "clarifai";
+import FaceRecognition from "./components/facerec/FaceRecognition";
 import Navigation from "./components/navigation/Navigation";
+//import Signin from './components/Signin/Signin';
+//import Register from './components/Register/Register';
 import Logo from "./components/logo/Logo";
 import ImageLinkForm from "./components/imageLinkForm/ImageLinkForm";
 import Rank from "./components/rank/Rank";
 import "./App.css";
-
-import Particles from "react-particles-js";
-import Clarifai from "clarifai";
 
 const app = new Clarifai.App({
   apiKey: "cf074394a8344254a296a42bd8779840"
@@ -21,18 +23,10 @@ const particlesOptions = {
         value_area: 800
       }
     }
-
-    // line_linked: {
-    //   shadow: {
-    //     enable: true,
-    //     color: "#3CA9D1",
-    //     blur: 5
-    //   }
-    // }
   }
 };
 
-class App extends React.Component {
+class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -45,15 +39,18 @@ class App extends React.Component {
   };
 
   onSubmit = () => {
-    console.log("click");
     app.models
-      .predict(app.apiKey, "https://samples.clarifai.com/face-det.jpg")
+      .predict(
+        "a403429f2ddf4b49b307e318f00e528b",
+        "https://samples.clarifai.com/face-det.jpg"
+      )
       .then(
         function(response) {
           console.log(response);
+          console.log("SUCCESS");
         },
         function(err) {
-          // there was an error
+          console.log("ERROR");
         }
       );
   };
@@ -69,6 +66,7 @@ class App extends React.Component {
           onInputChange={this.onInputChange}
           onSubmit={this.onSubmit}
         />
+        <FaceRecognition />
       </div>
     );
   }
