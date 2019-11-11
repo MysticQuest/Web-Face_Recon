@@ -16,7 +16,7 @@
 
 .sheep-box {
   position: absolute;
-  box-shadow: 0 0 0 3px #149df2 inset;
+  /* box-shadow: 0 0 0 3px #149df2 inset; */
   cursor: pointer;
   overflow: visible;
 
@@ -30,7 +30,7 @@
 }
 
 .sheep-head {
-  width: 200%;
+  width: 230%;
   margin: 0px;
   padding: 0px;
   height: auto;
