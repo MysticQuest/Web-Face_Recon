@@ -1,10 +1,11 @@
 import React from "react";
 import "./FaceRecognition.css";
+import sheep from "./sheep.png";
 
 const FaceRecognition = ({ imageUrl, box }) => {
   return (
     <div className="center ma">
-      <div className=" absolute mt2">
+      <div className="image-div absolute mt2">
         <img
           alt="otinanai"
           id="inputimage"
@@ -12,7 +13,7 @@ const FaceRecognition = ({ imageUrl, box }) => {
           height="auto"
           src={imageUrl}
         />
-        <div
+        {/* <div
           className="bounding-box"
           style={{
             top: box.topRow,
@@ -20,8 +21,31 @@ const FaceRecognition = ({ imageUrl, box }) => {
             bottom: box.bottomRow,
             left: box.leftCol
           }}
-        ></div>
-        <img alt="sheep" src="./sheep.png"></img>
+        ></div> */}
+
+        <div
+          className="sheep-box"
+          style={{
+            top: box.topRow,
+            right: box.rightCol,
+            bottom: box.bottomRow,
+            left: box.leftCol
+          }}
+        >
+          <img className="sheep-head" alt="sheep" src={sheep}></img>
+        </div>
+
+        {/* <img
+          style={{
+            top: box.topRow,
+            right: box.rightCol,
+            bottom: box.bottomRow,
+            left: box.leftCol
+          }}
+          className="sheep-head"
+          alt="sheep"
+          src={sheep}
+        ></img> */}
       </div>
     </div>
   );

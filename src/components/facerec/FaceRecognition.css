@@ -1,3 +1,7 @@
+.image-div {
+  overflow: hidden;
+}
+
 .bounding-box {
   position: absolute;
   box-shadow: 0 0 0 3px #149df2 inset;
@@ -8,4 +12,29 @@
   -ms-flex-pack: center;
   justify-content: center;
   cursor: pointer;
+}
+
+.sheep-box {
+  position: absolute;
+  box-shadow: 0 0 0 3px #149df2 inset;
+  cursor: pointer;
+  overflow: visible;
+
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-pack: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.sheep-head {
+  width: 200%;
+  margin: 0px;
+  padding: 0px;
+  height: auto;
+  max-width: 1000% !important;
+  max-height: 1000% !important;
+  position: absolute;
 }
