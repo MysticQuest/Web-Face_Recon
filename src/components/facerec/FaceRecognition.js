@@ -6,7 +6,7 @@ import sheep2 from "./sheep2.png";
 
 const sheepAray = [sheep, sheep1, sheep2];
 
-const FaceRecognition = ({ imageUrl, box }) => {
+const FaceRecognition = ({ imageUrl, boxes }) => {
   return (
     <div className="center ma">
       <div className="image-div absolute mt2">
@@ -26,22 +26,25 @@ const FaceRecognition = ({ imageUrl, box }) => {
             left: box.leftCol
           }}
         ></div> */}
-
-        <div
-          className="sheep-box"
-          style={{
-            top: box.topRow,
-            right: box.rightCol,
-            bottom: box.bottomRow,
-            left: box.leftCol
-          }}
-        >
-          <img
-            className="sheep-head"
-            alt=""
-            src={sheepAray[Math.floor(Math.random() * sheepAray.length)]}
-          ></img>
-        </div>
+        {boxes.map(box => {
+          return (
+            <div
+              className="sheep-box"
+              style={{
+                top: box.topRow,
+                right: box.rightCol,
+                bottom: box.bottomRow,
+                left: box.leftCol
+              }}
+            >
+              <img
+                className="sheep-head"
+                alt=""
+                src={sheepAray[Math.floor(Math.random() * sheepAray.length)]}
+              ></img>
+            </div>
+          );
+        })}
 
         {/* <img
           style={{
