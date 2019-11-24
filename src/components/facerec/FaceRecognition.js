@@ -29,6 +29,7 @@ const FaceRecognition = ({ imageUrl, boxes }) => {
         {boxes.map(box => {
           return (
             <div
+              key={box.topRow}
               className="sheep-box"
               style={{
                 top: box.topRow,
