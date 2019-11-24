@@ -1,10 +1,5 @@
 import React from "react";
 import "./FaceRecognition.css";
-import sheep from "./sheep.png";
-import sheep1 from "./sheep1.png";
-import sheep2 from "./sheep2.png";
-
-const sheepAray = [sheep, sheep1, sheep2];
 
 const FaceRecognition = ({ imageUrl, boxes }) => {
   return (
@@ -30,34 +25,16 @@ const FaceRecognition = ({ imageUrl, boxes }) => {
           return (
             <div
               key={box.topRow}
-              className="sheep-box"
+              className="bounding-box"
               style={{
                 top: box.topRow,
                 right: box.rightCol,
                 bottom: box.bottomRow,
                 left: box.leftCol
               }}
-            >
-              <img
-                className="sheep-head"
-                alt=""
-                src={sheepAray[Math.floor(Math.random() * sheepAray.length)]}
-              ></img>
-            </div>
+            ></div>
           );
         })}
-
-        {/* <img
-          style={{
-            top: box.topRow,
-            right: box.rightCol,
-            bottom: box.bottomRow,
-            left: box.leftCol
-          }}
-          className="sheep-head"
-          alt="sheep"
-          src={sheep}
-        ></img> */}
       </div>
     </div>
   );
